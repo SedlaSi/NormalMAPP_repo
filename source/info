@@ -1,0 +1,20 @@
+Project Informations:
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Project has been created in IntelliJ IDEA 2016.1.
+Project uses Maven repositories for following packages:
+	vecmath
+	jama-1.0.3.
+	jai-imageio-core-1.3.0.
+	im4java-1.2.0.
+
+Build Informations:
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+For builded aplication, libraries are linked via MANIFEST.MF file.
+Please, keep folders and files orders as they are.
+
+OS Availability:
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+NormalMAPP has been tested on Linux Xubuntu and Microsoft Windows 7.
+For compiling version to unsupported system, change informations in following classes:
+	Session.java
+	ImageLoader.java
