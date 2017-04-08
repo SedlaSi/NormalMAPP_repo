@@ -546,7 +546,10 @@ public class MainScreen extends JFrame {
 
                 if (image != null) {
                     updateImagePanels();
-
+                    if (image.getHeightMap() != null) {
+                        tabbedPanel.setSelectedComponent(heightMapImagePanel);
+                        cardSettingsBoxLayout.show(cardSettingsBoxPanel, "hs");
+                    }
                 }
             }
         }
@@ -869,6 +872,9 @@ public class MainScreen extends JFrame {
             protected void paintComponent(Graphics g) {
 
                 Graphics2D g2d = (Graphics2D) g;
+                g2d.setColor(new Color(128, 127, 255));
+                g2d.fillRect(0,0,500,500);
+
                 g2d.translate(this.getWidth() / 2, this.getHeight() / 2);
                 g2d.rotate(Math.toRadians(lightAngle.getValue()));
                 g2d.translate(-getLightImage().getWidth(this) / 2, -getLightImage().getHeight(this) / 2);
@@ -953,6 +959,8 @@ public class MainScreen extends JFrame {
                     if (imageLoader != null && image != null && image.getHeightMap() != null) {
                         imageLoader.refreshNormalMap(angle, normalHeight = ((70.0 * (-99.0)) / 10000.0 + 1.0));
                         updateNormal(image.getNormalMap());
+                        cardSettingsBoxLayout.show(cardSettingsBoxPanel, "ns");
+                        tabbedPanel.setSelectedComponent(normalMapImagePanel);
                     }
                 }
             }
@@ -1089,7 +1097,7 @@ public class MainScreen extends JFrame {
                 upLeft.add(deltaESlider, BorderLayout.CENTER);
 
                 JPanel upRight = new JPanel(new BorderLayout());
-                upRight.add(new JLabel("    Smoothness:"), BorderLayout.NORTH);
+                upRight.add(new JLabel("   Smoothness:      "), BorderLayout.NORTH);
                 regularSlider = new JSlider(JSlider.VERTICAL, 0, 100, 50);
                 regularSlider.setMajorTickSpacing(25);
                 regularSlider.setMinorTickSpacing(10);

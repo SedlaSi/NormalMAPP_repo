@@ -54,12 +54,6 @@ public class ImageLoader extends JFrame {
         } else {
             return null;
         }
-
-        if(Session.SYSTEM.equals("WINDOWS")) {
-            //ProcessStarter.setGlobalSearchPath(Session.graphicsPath);
-            //ProcessStarter.setGlobalSearchPath(".\\lib\\GraphicsMagick");
-        }
-
         SwingWorker<Void, Void> mySwingWorker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
@@ -89,9 +83,6 @@ public class ImageLoader extends JFrame {
                     //image.setNormalMap(ImageIO.read(new File(sessionFolder + Session.SLASH + NORMAL_NAME)));
                 } catch (IOException e) {
                     e.printStackTrace();
-                    System.out.println("%%%%%%%%%%%%%%%%%%%%");
-                    System.out.println(Session.graphicsPath);
-                    System.out.println(newImagePath);
                 }
                 return null;
             }

@@ -1009,19 +1009,26 @@ public class ShapeFromShading implements Algorithm {
 
         Matrix A = new Matrix(valsA);
         Matrix b = new Matrix(valsB);
-        Matrix x = A.solve(b);
+        Matrix x;
+        try{
+            x = A.solve(b);
+            DecimalFormat decimalFormat = new DecimalFormat("#0.0000");
+            double lightX = x.get(0, 0);
+            double lightY = x.get(1, 0);
+            double lightZ = x.get(2, 0);
 
-        DecimalFormat decimalFormat = new DecimalFormat("#0.0000");
-        double lightX = x.get(0, 0);
-        double lightY = x.get(1, 0);
-        double lightZ = x.get(2, 0);
+            double size = Math.sqrt((lightX * lightX) + lightY * lightY + lightZ * lightZ);
+            lightX = -lightX / size;
+            lightY = lightY / size;
+            lightZ = lightZ / size;
 
-        double size = Math.sqrt((lightX * lightX) + lightY * lightY + lightZ * lightZ);
-        lightX = -lightX / size;
-        lightY = lightY / size;
-        lightZ = lightZ / size;
+            return "Light vector = (" + decimalFormat.format(lightX) + " , " + decimalFormat.format(lightY) + " , " + decimalFormat.format(lightZ) + ");";
+        } catch (Exception e){
+            return "Singular values. Rearrange your markers.";
+        }
 
-        return "Light vector = (" + decimalFormat.format(lightX) + " , " + decimalFormat.format(lightY) + " , " + decimalFormat.format(lightZ) + ");";
+
+
     }
 
     public String getLightMessage() {
