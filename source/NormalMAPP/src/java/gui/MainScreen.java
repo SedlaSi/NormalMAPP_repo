@@ -550,9 +550,17 @@ public class MainScreen extends JFrame {
 
                 }
             } else if (e.getSource() == saveNormalMap) {
-                imageLoader.saveNormalMap();
+                if(image != null && image.getNormalMap() != null){
+                    imageLoader.saveNormalMap();
+                } else {
+                    JOptionPane.showMessageDialog(getFrame(), "No normal map to be saved.");
+                }
             } else if (e.getSource() == saveHeighMap) {
-                imageLoader.saveHeightMap();
+                if(image != null && image.getHeightMap() != null) {
+                    imageLoader.saveHeightMap();
+                } else {
+                    JOptionPane.showMessageDialog(getFrame(), "No height map to be saved.");
+                }
             } else if (e.getSource() == exit) {
                 if (session != null) {
                     session.endSession();
